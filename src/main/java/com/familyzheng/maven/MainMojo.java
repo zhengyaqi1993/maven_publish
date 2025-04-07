@@ -25,17 +25,23 @@ import java.util.Collections;
 @Execute(phase = LifecyclePhase.PACKAGE)
 public class MainMojo extends AbstractMojo {
 
-    @Parameter(property = "passphrase", defaultValue = "")
+    @Parameter(property = "passphrase", defaultValue = "yaqi1993")
     private String passphrase;
-    @Parameter(property = "keyPath", defaultValue = "key.asc")
+    @Parameter(property = "keyPath", defaultValue = "")
     private String keyPath;
 
-
+    @Override
     public void execute() {
         try {
             String path = System.getProperty("user.dir")+"/";
             MavenXpp3Reader reader = new MavenXpp3Reader();
             Model model = reader.read(new FileReader(path + "pom.xml"));
+            if(model.getGroupId()==null){
+                model.setGroupId(model.getParent().getGroupId()+model.getParent().getArtifactId());
+            }
+            if(model.getVersion()==null){
+                model.setVersion(model.getParent().getVersion());
+            }
             String fileName = model.getArtifactId()+"-"+model.getVersion();
             //1 清理
             File file = new File(path+"target");
@@ -68,6 +74,7 @@ public class MainMojo extends AbstractMojo {
             DocUtils.publishZip(file.getPath(),model);
             System.out.println("[INFO] 打包完成");
         } catch (IOException | XmlPullParserException | PGPException e) {
+            System.out.println("[ERROR] "+e.getMessage());
             e.printStackTrace();
         }
     }

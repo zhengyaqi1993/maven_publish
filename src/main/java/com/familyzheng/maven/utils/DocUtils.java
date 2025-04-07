@@ -42,7 +42,6 @@ public class DocUtils {
         manifest.getMainAttributes().putValue("Manifest-Version", model.getVersion());
         manifest.getMainAttributes().putValue("Built-By", model.getName());
         JarOutputStream jos = new JarOutputStream(fos, manifest);
-        //
         jos.close();
         fos.close();
     }

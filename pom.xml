@@ -17,6 +17,7 @@
     <url>https://github.com/zhengyaqi1993/maven_publish</url>
     <connection>scm:git:https://github.com/zhengyaqi1993/maven_publish.git</connection>
   </scm>
+
   <organization>
     <name>familyzheng</name>
     <url>https://familyzheng.com</url>
@@ -29,6 +30,7 @@
       <email>980606889@qq.com</email>
     </developer>
   </developers>
+
   <licenses>
     <license>
       <name>Apache 2</name>

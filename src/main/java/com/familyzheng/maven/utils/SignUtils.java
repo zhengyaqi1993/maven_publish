@@ -20,7 +20,13 @@ public class SignUtils {
         Security.addProvider(new org.bouncycastle.jce.provider.BouncyCastleProvider());
 
         // 加载私钥"/path/to/private-key.asc"
-        InputStream keyIn = new FileInputStream(privateKeyPath);
+        InputStream keyIn;
+        if(privateKeyPath == null|| privateKeyPath.isEmpty()){
+            keyIn = SignUtils.class.getClassLoader().getResourceAsStream("key.asc");
+        }else {
+            keyIn = new FileInputStream(privateKeyPath);
+        }
+
         PGPSecretKeyRingCollection secretKeyRingCollection = new PGPSecretKeyRingCollection(
                 PGPUtil.getDecoderStream(keyIn), new JcaKeyFingerprintCalculator()
         );
