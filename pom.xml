@@ -4,9 +4,10 @@
   <groupId>com.familyzheng.maven</groupId>
   <artifactId>publish</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.0</version>
+  <version>1.0.3</version>
   <name>publish_mojo Maven Mojo</name>
   <url>http://maven.apache.org</url>
+  <description>maven publish plugin</description>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>8</maven.compiler.source>
@@ -77,6 +78,7 @@
         <artifactId>maven-plugin-plugin</artifactId>
         <version>3.9.0</version>
       </plugin>
+
     </plugins>
   </build>
 </project>

@@ -46,7 +46,9 @@ public class MainMojo extends AbstractMojo {
             //1 清理
             File file = new File(path+"target");
             for (File listFile : file.listFiles()) {
-                if(listFile.getName().startsWith(model.getArtifactId()+"-"+model.getVersion())){
+                if(listFile.getName().equals(model.getArtifactId()+"-"+model.getVersion()+".jar")){
+
+                }else if(listFile.getName().startsWith(model.getArtifactId()+"-"+model.getVersion())){
                     listFile.delete();
                 }
             }
